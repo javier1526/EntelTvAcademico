@@ -1,7 +1,5 @@
 # Informe de modificaciones del proyecto Entel TV
-
-Evaluación Sumativa N.º 3, Parte 2 — Programación Back End  
-Docente: Boris Astorga Parraguez  
+ 
 Fecha: 17 de noviembre de 2026
 
 ## Introducción
