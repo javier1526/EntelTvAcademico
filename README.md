@@ -17,7 +17,6 @@ Entel TV Chile; no es un servicio oficial ni reproduce películas o series.
 
 Las dependencias directas son Django 5.2.17, mysqlclient 2.3.0 y Pillow 12.3.0.
 Bootstrap 5.3.3 y los recursos de presentación están incluidos localmente.
-No se necesitan Node.js, OpenAI ni django-environ para ejecutar la aplicación.
 
 ## 1. Preparar el entorno virtual
 
