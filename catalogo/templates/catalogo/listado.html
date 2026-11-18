@@ -1,0 +1,51 @@
+{% extends 'catalogo/base.html' %}
+{% block titulo %}
+    {{ titulo_pagina }}
+{% endblock %}
+{% block contenido %}
+    <header class="encabezado-pagina">
+        <p class="sobretitulo">
+            Catálogo de demostración
+        </p>
+        <h1>
+            {{ titulo_pagina }}
+        </h1>
+        <p class="texto-secundario">
+            Explora historias por título, género y año.
+        </p>
+    </header>
+    <form method="get" class="panel-filtros" aria-label="Buscar y filtrar contenidos">
+        <div class="campos-filtros">
+            {% for campo in formulario %}
+                <div class="campo-filtro">
+                    {{ campo.label_tag }}{{ campo }}{{ campo.errors }}
+                </div>
+            {% endfor %}
+        </div>
+        <div class="acciones-formulario">
+            <button class="btn btn-acento" type="submit">
+                Aplicar filtros
+            </button>
+            <a class="btn btn-outline-light" href="{{ request.path }}">
+                Limpiar
+            </a>
+        </div>
+    </form>
+    <p class="recuento" role="status">
+        {{ contenidos|length }} contenido{{ contenidos|length|pluralize }} encontrado{{ contenidos|length|pluralize }}
+    </p>
+    <div class="cuadricula-contenidos">
+        {% for contenido in contenidos %}
+            {% include 'catalogo/tarjeta.html' %}
+        {% empty %}
+            <div class="estado-vacio">
+                <h2>
+                    No encontramos resultados
+                </h2>
+                <p>
+                    Prueba con otro título o cambia los filtros seleccionados.
+                </p>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

@@ -1,0 +1,86 @@
+{% extends 'componentes/base.html' %}
+{% block titulo %}
+    Gestión de usuarios
+{% endblock %}
+{% block contenido %}
+    <header class="encabezado-pagina">
+        <p class="sobretitulo">
+            Administración
+        </p>
+        <h1>
+            Gestión de usuarios
+        </h1>
+        <p class="texto-secundario">
+            Administra las casillas independientes de cada cuenta. Desactivar conserva tickets y conversaciones.
+        </p>
+    </header>
+    <div class="tabla-contenedor">
+        <table class="table tabla-plataforma">
+            <thead>
+                <tr>
+                    <th>
+                        Usuario
+                    </th>
+                    <th>
+                        Correo
+                    </th>
+                    <th>
+                        Activo
+                    </th>
+                    <th>
+                        Administrador
+                    </th>
+                    <th>
+                        Técnico
+                    </th>
+                    <th>
+                        Acciones
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for usuario in Usuarios %}
+                    <tr>
+                        <th scope="row">
+                            {{ usuario.usuario }}
+                            <form id="permisos-{{ usuario.pk }}" method="post">
+                                {% csrf_token %}
+                                <input type="hidden" name="Userid" value="{{ usuario.pk }}">
+                            </form>
+                        </th>
+                        <td>
+                            {{ usuario.correo }}
+                        </td>
+                        <td>
+                            <input type="checkbox" class="form-check-input" name="activo" form="permisos-{{ usuario.pk }}" aria-label="Cuenta activa de {{ usuario.usuario }}" {% if usuario.activo %}checked{% endif %}>
+                        </td>
+                        <td>
+                            <input type="checkbox" class="form-check-input" name="admin" form="permisos-{{ usuario.pk }}" aria-label="Permiso administrativo de {{ usuario.usuario }}" {% if usuario.admin %}checked{% endif %}>
+                        </td>
+                        <td>
+                            <input type="checkbox" class="form-check-input" name="tecnico" form="permisos-{{ usuario.pk }}" aria-label="Permiso técnico de {{ usuario.usuario }}" {% if usuario.tecnico %}checked{% endif %}>
+                        </td>
+                        <td>
+                            <div class="acciones-tabla">
+                                <button class="btn btn-sm btn-outline-light" type="submit" form="permisos-{{ usuario.pk }}">
+                                    Guardar permisos
+                                </button>
+                                {% if usuario.activo and usuario.pk != user.pk %}
+                                    <form method="post" action="{% url 'eliminar_usuario' usuario.pk %}">
+                                        {% csrf_token %}
+                                        <button class="btn btn-sm btn-outline-danger" type="submit">
+                                            Desactivar usuario
+                                        </button>
+                                    </form>
+                                {% endif %}
+                            </div>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <a class="volver" href="{% url 'administracion' %}">
+        Volver al panel
+    </a>
+{% endblock %}

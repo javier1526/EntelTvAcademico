@@ -1,0 +1,70 @@
+<header class="cabecera-plataforma">
+    <nav class="contenedor navbar navbar-expand-lg" aria-label="Navegación principal">
+        <a class="marca" href="{% url 'index' %}" aria-label="Entel TV, inicio">
+            entel
+            <span>
+                tv
+            </span>
+        </a>
+        <button class="navbar-toggler boton-menu" type="button" data-bs-toggle="collapse" data-bs-target="#menu-principal" aria-controls="menu-principal" aria-expanded="false">
+            Menú
+        </button>
+        <div id="menu-principal" class="collapse navbar-collapse">
+            <div class="enlaces-principales">
+                {% if user.is_authenticated %}
+                    <a href="{% url 'catalogo:inicio' %}">
+                        Inicio
+                    </a>
+                    <a href="{% url 'catalogo:peliculas' %}">
+                        Películas
+                    </a>
+                    <a href="{% url 'catalogo:series' %}">
+                        Series
+                    </a>
+                    <a href="{% url 'catalogo:listado' %}">
+                        Buscar
+                    </a>
+                    <a href="{% url 'centro_ayuda' %}">
+                        Centro de ayuda
+                    </a>
+                    <a href="{% url 'inicio' user.pk %}">
+                        Mis tickets
+                    </a>
+                    {% if user.admin or user.tecnico %}
+                        <a href="{% url 'escritorio_tecnico' %}">
+                            Atención
+                        </a>
+                        <a href="{% url 'administracion' %}">
+                            Panel
+                        </a>
+                    {% endif %}
+                    {% if user.admin %}
+                        <a href="{% url 'catalogo:gestion' %}">
+                            Gestionar catálogo
+                        </a>
+                    {% endif %}
+                {% else %}
+                    <a href="{% url 'Login' %}">
+                        Iniciar sesión
+                    </a>
+                    <a href="{% url 'Register' %}">
+                        Registrarse
+                    </a>
+                {% endif %}
+            </div>
+            {% if user.is_authenticated %}
+                <div class="cuenta">
+                    <span>
+                        {{ user.usuario }}
+                    </span>
+                    <form method="post" action="{% url 'Logout' %}">
+                        {% csrf_token %}
+                        <button class="enlace-boton" type="submit">
+                            Salir
+                        </button>
+                    </form>
+                </div>
+            {% endif %}
+        </div>
+    </nav>
+</header>

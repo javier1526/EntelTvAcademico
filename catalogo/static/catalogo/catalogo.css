@@ -1,0 +1,403 @@
+.destacado {
+    min-height: 430px;
+    border-radius: .8rem;
+    position: relative;
+    overflow: hidden;
+    background: #16131c;
+    display: flex;
+    align-items: center;
+    margin-bottom: 3rem;
+}
+
+.fondo-destacado {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 58%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 35%;
+    opacity: .8;
+}
+
+.destacado::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, #14121f 16%, #14121fe6 40%, #14121f00 100%);
+}
+
+.texto-destacado {
+    position: relative;
+    z-index: 1;
+    padding: 3rem;
+    width: 65%;
+}
+
+.texto-destacado h1 {
+    font-size: clamp(2rem, 4vw, 3.7rem);
+    font-weight: 750;
+    line-height: 1.05;
+    margin-block: .7rem 1.2rem;
+    letter-spacing: -1.5px;
+}
+
+.metadatos {
+    font-size: .9rem;
+    color: #d8cfe4;
+}
+
+.sinopsis-destacado {
+    max-width: 570px;
+    line-height: 1.8;
+    color: #e3dfea;
+    margin-bottom: 1.7rem;
+}
+
+.texto-destacado .btn {
+    margin: 0 .5rem .5rem 0;
+}
+
+.titulo-seccion {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.titulo-seccion h2 {
+    font-size: 1.65rem;
+    margin: 0;
+}
+
+.titulo-seccion > a:not(.btn) {
+    color: var(--secundario);
+    font-size: .88rem;
+}
+
+.seccion-carrusel {
+    position: relative;
+    margin-bottom: 3rem;
+}
+
+.carrusel-contenidos {
+    display: flex;
+    gap: 1.2rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding: 1.5rem .2rem .8rem;
+    scrollbar-color: #555363 transparent;
+}
+
+.carrusel-contenidos .tarjeta-contenido {
+    flex: 0 0 calc((100% - 6rem) / 6);
+    min-width: 154px;
+    scroll-snap-align: start;
+}
+
+.controles-carrusel {
+    display: flex;
+    gap: .7rem;
+    justify-content: flex-end;
+    margin-top: .7rem;
+}
+
+.controles-carrusel[hidden] {
+    display: none;
+}
+
+.controles-carrusel button {
+    color: var(--texto);
+    background: #242631;
+    border: 1px solid var(--borde);
+    border-radius: .4rem;
+    padding: .4rem .7rem;
+    font-size: .75rem;
+}
+
+.cuadricula-contenidos {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 2rem 1.4rem;
+}
+
+.portada-tarjeta {
+    aspect-ratio: 2 / 3;
+    position: relative;
+    border-radius: .65rem;
+    overflow: hidden;
+    background: var(--superficie);
+    border: 1px solid var(--borde);
+}
+
+.portada-tarjeta img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.tipo-tarjeta {
+    position: absolute;
+    bottom: .6rem;
+    left: .6rem;
+    background: #0d0e15ed;
+    color: #f3d5e7;
+    border: 1px solid #ffffff30;
+    padding: .25rem .5rem;
+    border-radius: .3rem;
+    font-size: .66rem;
+}
+
+.tarjeta-contenido h3 {
+    font-size: .95rem;
+    line-height: 1.5;
+    margin: .8rem 0 .3rem;
+}
+
+.tarjeta-contenido p {
+    color: var(--secundario);
+    font-size: .75rem;
+    margin: 0;
+}
+
+.tarjeta-contenido a:hover .portada-tarjeta {
+    border-color: var(--acento);
+}
+
+.panel-filtros {
+    padding: 1.4rem;
+    background: var(--superficie);
+    border: 1px solid var(--borde);
+    border-radius: .7rem;
+}
+
+.campos-filtros {
+    display: grid;
+    grid-template-columns: 1.5fr repeat(4, minmax(0, 1fr));
+    gap: 1rem;
+}
+
+.panel-filtros .acciones-formulario {
+    margin-top: 1rem;
+}
+
+.campo-filtro {
+    min-width: 0;
+}
+
+.recuento {
+    color: var(--secundario);
+    margin-block: 1.5rem;
+    font-size: .85rem;
+}
+
+.ficha-contenido {
+    display: grid;
+    grid-template-columns: minmax(180px, 320px) minmax(0, 1fr);
+    gap: 3rem;
+    padding-block: 1rem 2rem;
+}
+
+.portada-ficha {
+    width: 100%;
+    height: auto;
+    border-radius: .7rem;
+}
+
+.datos-ficha {
+    padding-top: 1rem;
+}
+
+.datos-ficha h1 {
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    margin-bottom: 1.5rem;
+}
+
+.metadatos-ficha {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.metadatos-ficha dt {
+    color: var(--secundario);
+    font-size: .8rem;
+    font-weight: 400;
+}
+
+.metadatos-ficha dd {
+    margin: .4rem 0 0;
+}
+
+.sinopsis-ficha {
+    color: #dedee6;
+    max-width: 750px;
+    line-height: 1.9;
+}
+
+.datos-ficha .btn {
+    margin: .5rem .5rem .5rem 0;
+}
+
+.seccion-resenas {
+    margin-block: 2rem;
+    max-width: 950px;
+}
+
+.formulario-resena {
+    max-width: 650px;
+    background: var(--superficie);
+    border: 1px solid var(--borde);
+    border-radius: .7rem;
+    padding: 1.5rem;
+    margin-block: 1.5rem;
+}
+
+.resena {
+    border-bottom: 1px solid var(--borde);
+    padding-block: 1.5rem;
+    overflow-wrap: anywhere;
+}
+
+.resena h3 {
+    font-size: 1rem;
+}
+
+.resena time {
+    color: var(--secundario);
+    font-size: .78rem;
+}
+
+.resena p {
+    margin-block: 1rem;
+    line-height: 1.8;
+}
+
+.acciones-resena {
+    display: flex;
+    gap: .7rem;
+    flex-wrap: wrap;
+}
+
+.filtro-estado {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1rem;
+    margin-block: 1.5rem;
+}
+
+.filtro-estado select {
+    width: auto;
+    min-width: 190px;
+}
+
+.filtro-estado label {
+    margin: 0;
+}
+
+.tabla-gestion {
+    border: 1px solid var(--borde);
+    border-radius: .7rem;
+}
+
+.tabla-gestion table {
+    margin: 0;
+    --bs-table-bg: var(--superficie);
+    --bs-table-color: var(--texto);
+    --bs-table-border-color: var(--borde);
+}
+
+.tabla-gestion td, .tabla-gestion th {
+    padding: 1rem;
+}
+
+.tabla-gestion th[scope=row] {
+    min-width: 190px;
+}
+
+.tabla-gestion caption {
+    padding: 1rem;
+    color: var(--secundario);
+}
+
+.estado-activo {
+    color: #9de5bd;
+}
+
+.estado-inactivo {
+    color: #ffc785;
+}
+
+@media (max-width: 1000px) {
+    .cuadricula-contenidos {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+    .campos-filtros {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+    .carrusel-contenidos .tarjeta-contenido {
+        flex-basis: 22%;
+    }
+    .texto-destacado {
+        width: 78%;
+        padding: 2rem;
+    }
+}
+
+@media (max-width: 700px) {
+    .cuadricula-contenidos {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1.5rem 1rem;
+    }
+    .campos-filtros {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .campo-filtro:first-child, .campo-filtro:last-child {
+        grid-column: 1 / -1;
+    }
+    .destacado {
+        min-height: 480px;
+        align-items: flex-end;
+    }
+    .fondo-destacado {
+        width: 100%;
+        height: 100%;
+        object-position: center 30%;
+        opacity: .5;
+    }
+    .destacado::after {
+        background: linear-gradient(0deg, #14121fff 5%, #14121f33);
+    }
+    .texto-destacado {
+        padding: 1.5rem;
+        width: 100%;
+    }
+    .texto-destacado h1 {
+        font-size: 2.4rem;
+    }
+    .sinopsis-destacado {
+        font-size: .88rem;
+        line-height: 1.65;
+    }
+    .carrusel-contenidos {
+        gap: .9rem;
+    }
+    .carrusel-contenidos .tarjeta-contenido {
+        flex-basis: 42%;
+        min-width: 0;
+    }
+    .ficha-contenido {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    .portada-ficha {
+        max-width: 230px;
+        margin-inline: auto;
+    }
+    .formulario-resena {
+        padding: 1.2rem;
+    }
+}

@@ -1,0 +1,69 @@
+{% extends 'componentes/base.html' %}
+{% block titulo %}
+    Iniciar sesión
+{% endblock %}
+{% block contenido %}
+    <div class="acceso">
+        <section class="presentacion-acceso">
+            <p class="sobretitulo">
+                Películas, series y atención en un lugar
+            </p>
+            <h1>
+                Tu próxima historia
+                <br>
+                empieza aquí.
+            </h1>
+            <p class="texto-secundario">
+                Explora el catálogo, comparte tu opinión y encuentra ayuda cuando la necesites.
+            </p>
+            <div class="muestra-portadas" aria-hidden="true">
+                {% load static %}
+                <img src="{% static 'catalogo/portadas/coco.svg' %}" alt="" width="200" height="300">
+                <img src="{% static 'catalogo/portadas/matrix.svg' %}" alt="" width="200" height="300">
+                <img src="{% static 'catalogo/portadas/stranger-things.svg' %}" alt="" width="200" height="300">
+            </div>
+        </section>
+        <section class="panel panel-acceso" aria-labelledby="titulo-login">
+            <p class="sobretitulo">
+                Bienvenido a Entel TV
+            </p>
+            <h2 id="titulo-login">
+                Iniciar sesión
+            </h2>
+            <p class="texto-secundario">
+                Accede a tu cuenta del prototipo académico.
+            </p>
+            <form method="post">
+                {% csrf_token %}
+                {{ form.non_field_errors }}
+                <p>
+                    <label for="{{ form.Usuario.id_for_label }}">
+                        Usuario
+                    </label>
+                    {{ form.Usuario }}{{ form.Usuario.errors }}
+                </p>
+                <p>
+                    <label for="{{ form.password.id_for_label }}">
+                        Contraseña
+                    </label>
+                    {{ form.password }}{{ form.password.errors }}
+                </p>
+                <p class="casilla">
+                    {{ form.remember_me }}
+                    <label for="{{ form.remember_me.id_for_label }}">
+                        Recordar sesión
+                    </label>
+                </p>
+                <button type="submit" class="btn btn-acento w-100">
+                    Iniciar sesión
+                </button>
+            </form>
+            <p class="pie-formulario">
+                ¿Aún no tienes cuenta?
+                <a href="{% url 'Register' %}">
+                    Registrarse
+                </a>
+            </p>
+        </section>
+    </div>
+{% endblock %}

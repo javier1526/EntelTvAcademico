@@ -1,0 +1,80 @@
+{% extends 'componentes/base.html' %}
+{% block titulo %}
+    Mis tickets
+{% endblock %}
+{% block contenido %}
+    <header class="encabezado-pagina cabecera-acciones">
+        <div>
+            <p class="sobretitulo">
+                Tu historial de atención
+            </p>
+            <h1>
+                Mis tickets
+            </h1>
+            <p class="texto-secundario">
+                Consulta tus solicitudes y continúa la conversación con un ejecutivo.
+            </p>
+        </div>
+        <a class="btn btn-acento" href="{% url 'centro_ayuda' %}">
+            Solicitar ayuda
+        </a>
+    </header>
+    <div class="dos-columnas tickets-cliente">
+        <section aria-label="Mis solicitudes">
+            {% for pregunta in Preguntas %}
+                <article class="panel tarjeta-ticket">
+                    <div class="fila-etiquetas">
+                        <span class="etiqueta">
+                            #{{ pregunta.pk }}
+                        </span>
+                        <span class="etiqueta">
+                            {{ pregunta.estado }}
+                        </span>
+                    </div>
+                    <h2>
+                        <a href="{% url 'respuestas' user.pk pregunta.pk %}">
+                            {{ pregunta.Titulo }}
+                        </a>
+                    </h2>
+                    <p class="texto-secundario">
+                        {{ pregunta.get_categoria_display }} · {{ pregunta.Fecha_creacion|date:"d/m/Y H:i" }}
+                    </p>
+                    <p>
+                        {% if pregunta.contenido_id %}
+                            {{ pregunta.contenido.titulo }}
+                        {% else %}
+                            Consulta general
+                        {% endif %}
+                    </p>
+                    <a class="enlace-acento" href="{% url 'respuestas' user.pk pregunta.pk %}">
+                        Abrir conversación
+                    </a>
+                </article>
+            {% empty %}
+                <div class="estado-vacio">
+                    <h2>
+                        Aún no tienes tickets
+                    </h2>
+                    <p>
+                        Cuando solicites ayuda a un ejecutivo, podrás seguir aquí la atención.
+                    </p>
+                </div>
+            {% endfor %}
+        </section>
+        <section class="panel" aria-labelledby="ticket-general">
+            <h2 id="ticket-general">
+                Crear ticket general
+            </h2>
+            <p class="texto-secundario">
+                Para una consulta sobre una película o serie, solicita ayuda desde su ficha.
+            </p>
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button class="btn btn-outline-light" type="submit">
+                    Crear ticket
+                </button>
+            </form>
+        </section>
+    </div>
+{% endblock %}

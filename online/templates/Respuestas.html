@@ -1,0 +1,61 @@
+{% extends 'componentes/base.html' %}
+{% load static %}
+{% block titulo %}
+    Ticket #{{ Pregunta.pk }} · {{ Pregunta.Titulo }}
+{% endblock %}
+{% block contenido %}
+    <a class="volver" href="{% if user.admin or user.tecnico %}{% url 'listado_preguntas' %}{% else %}{% url 'inicio' user.pk %}{% endif %}">
+        Volver a los tickets
+    </a>
+    <section class="panel conversacion" aria-labelledby="titulo-conversacion">
+        <header class="cabecera-conversacion">
+            <p class="sobretitulo">
+                Atención con un ejecutivo · Ticket #{{ Pregunta.pk }}
+            </p>
+            <h1 id="titulo-conversacion">
+                {{ Pregunta.Titulo }}
+            </h1>
+            <p class="fila-etiquetas">
+                <span class="etiqueta">
+                    {{ Pregunta.get_categoria_display }}
+                </span>
+                <span class="etiqueta">
+                    {{ Pregunta.estado }}
+                </span>
+            </p>
+            {% if Pregunta.contenido_id %}
+                <p>
+                    Contenido:
+                    <a class="enlace-acento" href="{% url 'catalogo:ficha_desde_ticket' Pregunta.pk %}">
+                        {{ Pregunta.contenido.titulo }} · Abrir ficha
+                    </a>
+                </p>
+            {% else %}
+                <p class="texto-secundario">
+                    Consulta general, sin contenido asociado.
+                </p>
+            {% endif %}
+        </header>
+        <div class="chat-messages" id="chat-box" data-mensajes-url="{% url 'obtener_mensajes' Pregunta.pk %}" aria-label="Historial de la conversación" aria-live="polite">
+        </div>
+        <p id="estado-conversacion" class="texto-secundario" role="status">
+        </p>
+        <form method="post" id="form-mensaje" class="entrada-conversacion">
+            {% csrf_token %}
+            {{ form.non_field_errors }}
+            <div>
+                <label for="{{ form.Respuesta.id_for_label }}">
+                    Tu mensaje
+                </label>
+                {{ form.Respuesta }}{{ form.Respuesta.errors }}
+            </div>
+            <button type="submit" class="btn btn-acento" title="Enviar mensaje">
+                Enviar mensaje
+            </button>
+        </form>
+    </section>
+{% endblock %}
+{% block scripts %}
+    <script src="{% static 'conversacion.js' %}" defer>
+    </script>
+{% endblock %}

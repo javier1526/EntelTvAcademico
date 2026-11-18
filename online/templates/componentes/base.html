@@ -1,0 +1,62 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>
+            {% block titulo %}
+                Inicio
+            {% endblock %}
+            · Entel TV académico
+        </title>
+        <link rel="stylesheet" href="{% static 'catalogo/vendor/bootstrap.min.css' %}">
+        <link rel="stylesheet" href="{% static 'plataforma.css' %}">
+        <link rel="stylesheet" href="{% static 'catalogo/catalogo.css' %}">
+        {% if user.is_authenticated and not user.admin and not user.tecnico %}
+            <link rel="stylesheet" href="{% static 'asistente_virtual.css' %}">
+        {% endif %}
+        {% block estilos %}
+        {% endblock %}
+    </head>
+    <body data-bs-theme="dark">
+        <a class="saltar-contenido" href="#contenido-principal">
+            Ir al contenido
+        </a>
+        {% include 'componentes/navegacion.html' %}
+        <main id="contenido-principal" class="contenedor contenido-principal">
+            {% for message in messages %}
+                <div class="alert {% if message.tags == 'error' %}alert-danger{% else %}alert-success{% endif %}" role="status">
+                    {{ message }}
+                </div>
+            {% endfor %}
+            {% block contenido %}
+            {% endblock %}
+        </main>
+        <footer class="contenedor pie-plataforma">
+            <p>
+                <strong>
+                    entel
+                    <span>
+                        tv
+                    </span>
+                </strong>
+                · Prototipo académico — No oficial
+            </p>
+            <p>
+                Películas y series de demostración. No representan disponibilidad comercial en Entel TV.
+            </p>
+        </footer>
+        {% if user.is_authenticated and not user.admin and not user.tecnico %}
+            {% include 'componentes/asistente_virtual.html' %}
+            <script src="{% static 'asistente_virtual.js' %}" defer>
+            </script>
+        {% endif %}
+        <script src="{% static 'catalogo/vendor/bootstrap.bundle.min.js' %}">
+        </script>
+        <script src="{% static 'catalogo/catalogo.js' %}" defer>
+        </script>
+        {% block scripts %}
+        {% endblock %}
+    </body>
+</html>

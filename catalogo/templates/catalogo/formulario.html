@@ -1,0 +1,40 @@
+{% extends 'catalogo/base.html' %}
+{% block titulo %}
+    {{ titulo_pagina }}
+{% endblock %}
+{% block contenido %}
+    <a class="volver" href="{% url 'catalogo:gestion' %}">
+        Volver a la gestión
+    </a>
+    <section class="panel-formulario">
+        <p class="sobretitulo">
+            Administración del catálogo
+        </p>
+        <h1>
+            {{ titulo_pagina }}
+        </h1>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ formulario.non_field_errors }}
+            {% for campo in formulario %}
+                <div class="campo-contenido">
+                    {{ campo.label_tag }} {{ campo }}
+                    {% if campo.help_text %}
+                        <p class="ayuda-campo">
+                            {{ campo.help_text }}
+                        </p>
+                    {% endif %}
+                    {{ campo.errors }}
+                </div>
+            {% endfor %}
+            <div class="acciones-formulario">
+                <button class="btn btn-acento" type="submit">
+                    Guardar contenido
+                </button>
+                <a class="btn btn-outline-light" href="{% url 'catalogo:gestion' %}">
+                    Cancelar
+                </a>
+            </div>
+        </form>
+    </section>
+{% endblock %}

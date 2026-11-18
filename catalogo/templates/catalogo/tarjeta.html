@@ -1,0 +1,21 @@
+<article class="tarjeta-contenido">
+    <a href="{% url 'catalogo:detalle' contenido.id %}">
+        <div class="portada-tarjeta">
+            <img src="{{ contenido.url_imagen }}" alt="Portada referencial de {{ contenido.titulo }}"
+                 loading="lazy" width="480" height="720">
+            <span class="tipo-tarjeta">
+                {{ contenido.get_tipo_display }}
+            </span>
+        </div>
+        <h3>
+            {{ contenido.titulo }}
+        </h3>
+        <p>
+            {{ contenido.anio }}
+            <span aria-hidden="true">
+                ·
+            </span>
+            {{ contenido.get_genero_display }}
+        </p>
+    </a>
+</article>

@@ -1,0 +1,82 @@
+# Cachés y archivos de Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Entornos virtuales y configuración local
+.venv/
+venv/
+env/
+ENV/
+.env
+.env.*
+!.env.example
+!.env.sample
+.envrc
+local_settings.py
+settings_local.py
+settings_private.py
+*.pem
+*.key
+*.pfx
+*.p12
+
+# Bases de datos y respaldos
+*.sqlite*
+*.db
+*.db-journal
+*.db-wal
+*.db-shm
+*.sql
+*.dump
+*.bak
+*.backup
+backups/
+respaldos/
+*.zip
+*.7z
+*.rar
+*.tar
+*.gz
+*.tgz
+*.bz2
+*.xz
+
+# Archivos temporales y registros
+*.log
+*.tmp
+*.temp
+*.swp
+*~
+logs/
+tmp/
+
+# Preferencias del editor y archivos del sistema
+.vscode/
+.idea/
+*.code-workspace
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Cachés de pruebas y cobertura
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.tox/
+.nox/
+.coverage
+.coverage.*
+htmlcov/
+coverage.xml
+
+# Medios cargados por usuarios; se conservan las portadas iniciales
+/media/*
+!/media/catalogo/
+/media/catalogo/*
+!/media/catalogo/demo/
+/media/catalogo/demo/*
+!/media/catalogo/demo/*.svg
+
+# Salida de collectstatic si se configura en la raíz
+/staticfiles/

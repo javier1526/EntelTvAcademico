@@ -1,0 +1,109 @@
+{% extends 'catalogo/base.html' %}
+{% block titulo %}
+    Descubre películas y series
+{% endblock %}
+{% block contenido %}
+    {% if destacado %}
+        <section class="destacado" aria-labelledby="titulo-destacado">
+            <img class="fondo-destacado" src="{{ destacado.url_imagen }}" alt="">
+            <div class="texto-destacado">
+                <p class="sobretitulo">
+                    Una historia para descubrir
+                </p>
+                <h1 id="titulo-destacado">
+                    {{ destacado.titulo }}
+                </h1>
+                <p class="metadatos">
+                    {{ destacado.get_tipo_display }} · {{ destacado.anio }} · {{ destacado.get_genero_display }}
+                </p>
+                <p class="sinopsis-destacado">
+                    {{ destacado.sinopsis }}
+                </p>
+                <a class="btn btn-acento" href="{% url 'catalogo:detalle' destacado.id %}">
+                    Ver ficha
+                </a>
+                <a class="btn btn-outline-light" href="{% url 'catalogo:listado' %}">
+                    Explorar catálogo
+                </a>
+            </div>
+        </section>
+    {% else %}
+        <section class="estado-vacio">
+            <h1>
+                Películas y series
+            </h1>
+            <p>
+                El catálogo todavía no tiene contenidos activos.
+            </p>
+            {% if user.admin %}
+                <a class="btn btn-acento" href="{% url 'catalogo:agregar' %}">
+                    Agregar contenido
+                </a>
+            {% endif %}
+        </section>
+    {% endif %}
+    <section class="seccion-carrusel" aria-labelledby="titulo-peliculas">
+        <div class="titulo-seccion">
+            <div>
+                <p class="sobretitulo">
+                    Encuentra tu próxima historia
+                </p>
+                <h2 id="titulo-peliculas">
+                    Películas
+                </h2>
+            </div>
+            <a href="{% url 'catalogo:peliculas' %}">
+                Ver todas
+            </a>
+        </div>
+        <div class="controles-carrusel" data-controles="carrusel-peliculas" hidden>
+            <button type="button" data-direccion="-1" aria-label="Películas anteriores">
+                Anterior
+            </button>
+            <button type="button" data-direccion="1" aria-label="Películas siguientes">
+                Siguiente
+            </button>
+        </div>
+        <div class="carrusel-contenidos" id="carrusel-peliculas" tabindex="0" aria-label="Películas; usa las flechas para recorrer">
+            {% for contenido in peliculas %}
+                {% include 'catalogo/tarjeta.html' %}
+            {% empty %}
+                <p class="texto-secundario">
+                    No hay películas activas.
+                </p>
+            {% endfor %}
+        </div>
+    </section>
+    <section class="seccion-carrusel" aria-labelledby="titulo-series">
+        <div class="titulo-seccion">
+            <div>
+                <p class="sobretitulo">
+                    Nuevos mundos, nuevas historias
+                </p>
+                <h2 id="titulo-series">
+                    Series
+                </h2>
+            </div>
+            <a href="{% url 'catalogo:series' %}">
+                Ver todas
+            </a>
+        </div>
+        <div class="controles-carrusel" data-controles="carrusel-series" hidden>
+            <button type="button" data-direccion="-1" aria-label="Series anteriores">
+                Anterior
+            </button>
+            <button type="button" data-direccion="1" aria-label="Series siguientes">
+                Siguiente
+            </button>
+        </div>
+        <div class="carrusel-contenidos" id="carrusel-series" tabindex="0" aria-label="Series; usa las flechas para recorrer">
+            {% for contenido in series %}
+                {% include 'catalogo/tarjeta.html' %}
+            {% empty %}
+                <p class="texto-secundario">
+                    No hay series activas.
+                </p>
+            {% endfor %}
+        </div>
+    </section>
+{% endblock %}

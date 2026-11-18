@@ -1,0 +1,88 @@
+{% extends 'componentes/base.html' %}
+{% block titulo %}
+    Escritorio del técnico
+{% endblock %}
+{% block contenido %}
+    <header class="encabezado-pagina cabecera-acciones">
+        <div>
+            <p class="sobretitulo">
+                Atención Entel TV
+            </p>
+            <h1>
+                Escritorio del técnico
+            </h1>
+            <p class="texto-secundario">
+                Bandeja compartida de tickets abiertos y en proceso.
+            </p>
+        </div>
+        <a class="btn btn-outline-light" href="{% url 'listado_preguntas' %}">
+            Ver todos los tickets
+        </a>
+    </header>
+    <div class="tabla-contenedor">
+        <table class="table tabla-plataforma">
+            <thead>
+                <tr>
+                    <th>
+                        Ticket
+                    </th>
+                    <th>
+                        Contenido
+                    </th>
+                    <th>
+                        Cliente
+                    </th>
+                    <th>
+                        Categoría
+                    </th>
+                    <th>
+                        Estado
+                    </th>
+                    <th>
+                        Atención
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for pregunta in Preguntas %}
+                    <tr>
+                        <th scope="row">
+                            #{{ pregunta.pk }} · {{ pregunta.Titulo }}
+                        </th>
+                        <td>
+                            {% if pregunta.contenido_id %}
+                                <a class="enlace-acento" href="{% url 'catalogo:ficha_desde_ticket' pregunta.pk %}">
+                                    {{ pregunta.contenido.titulo }}
+                                </a>
+                            {% else %}
+                                Consulta general
+                            {% endif %}
+                        </td>
+                        <td>
+                            {{ pregunta.Usuario.usuario }}
+                        </td>
+                        <td>
+                            {{ pregunta.get_categoria_display }}
+                        </td>
+                        <td>
+                            <span class="etiqueta">
+                                {{ pregunta.estado }}
+                            </span>
+                        </td>
+                        <td>
+                            <a class="btn btn-sm btn-acento" href="{% url 'respuestas' pregunta.Usuario_id pregunta.pk %}">
+                                Atender chat
+                            </a>
+                        </td>
+                    </tr>
+                {% empty %}
+                    <tr>
+                        <td colspan="6">
+                            No hay tickets pendientes en este momento.
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

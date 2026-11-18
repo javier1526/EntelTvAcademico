@@ -1,0 +1,146 @@
+{% extends 'componentes/base.html' %}
+{% block titulo %}
+    Tickets de atención
+{% endblock %}
+{% block contenido %}
+    <header class="encabezado-pagina">
+        <p class="sobretitulo">
+            Bandeja compartida
+        </p>
+        <h1>
+            Tickets de atención
+        </h1>
+        <p class="texto-secundario">
+            Busca solicitudes y actualiza su estado.
+        </p>
+    </header>
+    <form method="get" class="panel filtros-tickets">
+        <div>
+            <label for="buscar-ticket">
+                Buscar por título
+            </label>
+            <input id="buscar-ticket" name="q" value="{{ query }}" type="search">
+        </div>
+        <div>
+            <label for="categoria-ticket">
+                Categoría
+            </label>
+            <select id="categoria-ticket" name="categoria">
+                <option value="">
+                    Todas
+                </option>
+                {% for valor, etiqueta in categorias %}
+                    <option value="{{ valor }}" {% if categoria == valor %}selected{% endif %}>
+                        {{ etiqueta }}
+                    </option>
+                {% endfor %}
+            </select>
+        </div>
+        <div>
+            <label for="estado-ticket">
+                Estado
+            </label>
+            <select id="estado-ticket" name="estado">
+                <option value="">
+                    Todos
+                </option>
+                {% for valor, etiqueta in estados %}
+                    <option value="{{ valor }}" {% if estado == valor %}selected{% endif %}>
+                        {{ etiqueta }}
+                    </option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="acciones-formulario">
+            <button class="btn btn-acento" type="submit">
+                Filtrar tickets
+            </button>
+            <a href="{% url 'listado_preguntas' %}" class="btn btn-outline-light">
+                Limpiar
+            </a>
+        </div>
+    </form>
+    <div class="tabla-contenedor">
+        <table class="table tabla-plataforma">
+            <caption>
+                {{ Preguntas|length }} ticket{{ Preguntas|length|pluralize }}
+            </caption>
+            <thead>
+                <tr>
+                    <th>
+                        Ticket
+                    </th>
+                    <th>
+                        Categoría
+                    </th>
+                    <th>
+                        Estado
+                    </th>
+                    <th>
+                        Cliente
+                    </th>
+                    <th>
+                        Fecha
+                    </th>
+                    <th>
+                        Acciones
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for pregunta in Preguntas %}
+                    <tr>
+                        <th scope="row">
+                            #{{ pregunta.pk }} · {{ pregunta.Titulo }}
+                        </th>
+                        <td>
+                            {{ pregunta.get_categoria_display }}
+                        </td>
+                        <td>
+                            <form method="post" action="{% url 'actualizar_estado' pregunta.pk %}" class="estado-ticket">
+                                {% csrf_token %}
+                                <label class="visually-hidden" for="estado-{{ pregunta.pk }}">
+                                    Estado del ticket {{ pregunta.pk }}
+                                </label>
+                                <select id="estado-{{ pregunta.pk }}" name="estado">
+                                    {% for valor, etiqueta in estados %}
+                                        <option value="{{ valor }}" {% if pregunta.estado == valor %}selected{% endif %}>
+                                            {{ etiqueta }}
+                                        </option>
+                                    {% endfor %}
+                                </select>
+                                <button class="btn btn-sm btn-outline-light" type="submit">
+                                    Guardar estado
+                                </button>
+                            </form>
+                        </td>
+                        <td>
+                            {{ pregunta.Usuario.usuario }}
+                        </td>
+                        <td>
+                            {{ pregunta.Fecha_creacion|date:"d/m/Y" }}
+                        </td>
+                        <td>
+                            <div class="acciones-tabla">
+                                <a class="btn btn-sm btn-acento" href="{% url 'respuestas' pregunta.Usuario_id pregunta.pk %}">
+                                    Abrir chat
+                                </a>
+                                {% if user.admin %}
+                                    <a class="btn btn-sm btn-outline-light" href="{% url 'modificar_pregunta' pregunta.pk %}">
+                                        Editar ticket
+                                    </a>
+                                {% endif %}
+                            </div>
+                        </td>
+                    </tr>
+                {% empty %}
+                    <tr>
+                        <td colspan="6">
+                            No se encontraron tickets. Prueba con otros filtros.
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

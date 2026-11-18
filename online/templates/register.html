@@ -1,0 +1,75 @@
+{% extends 'componentes/base.html' %}
+{% block titulo %}
+    Registro de clientes
+{% endblock %}
+{% block contenido %}
+    <div class="acceso">
+        <section class="presentacion-acceso">
+            <p class="sobretitulo">
+                Un catálogo para descubrir
+            </p>
+            <h1>
+                Historias para
+                <br>
+                todos los gustos.
+            </h1>
+            <p class="texto-secundario">
+                Crea tu cuenta para explorar películas y series, publicar reseñas y conversar con nuestro equipo.
+            </p>
+            <p class="aviso-demo">
+                Prototipo académico. El registro no contrata servicios comerciales de Entel.
+            </p>
+        </section>
+        <section class="panel panel-acceso" aria-labelledby="titulo-registro">
+            <h2 id="titulo-registro">
+                Crear cuenta
+            </h2>
+            <form method="post">
+                {% csrf_token %}
+                {{ form.non_field_errors }}
+                <p>
+                    <label for="{{ form.usuario.id_for_label }}">
+                        Usuario
+                    </label>
+                    {{ form.usuario }}{{ form.usuario.errors }}
+                </p>
+                <p>
+                    <label for="{{ form.correo.id_for_label }}">
+                        Correo electrónico
+                    </label>
+                    {{ form.correo }}{{ form.correo.errors }}
+                </p>
+                <p>
+                    <label for="{{ form.rut.id_for_label }}">
+                        RUT
+                    </label>
+                    {{ form.rut }}{{ form.rut.errors }}
+                </p>
+                <p>
+                    <label for="{{ form.password.id_for_label }}">
+                        Contraseña
+                    </label>
+                    {{ form.password }}{{ form.password.errors }}
+                    <small class="ayuda-campo">
+                        Al menos 8 caracteres.
+                    </small>
+                </p>
+                <p>
+                    <label for="{{ form.password_2.id_for_label }}">
+                        Confirmar contraseña
+                    </label>
+                    {{ form.password_2 }}{{ form.password_2.errors }}
+                </p>
+                <button type="submit" class="btn btn-acento w-100">
+                    Crear cuenta
+                </button>
+            </form>
+            <p class="pie-formulario">
+                ¿Ya tienes cuenta?
+                <a href="{% url 'Login' %}">
+                    Iniciar sesión
+                </a>
+            </p>
+        </section>
+    </div>
+{% endblock %}

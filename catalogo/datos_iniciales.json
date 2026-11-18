@@ -1,0 +1,152 @@
+[
+  {
+    "clave": "toy-story", "titulo": "Toy Story", "tipo": "pelicula", "genero": "animacion", "anio": 1995,
+    "sinopsis": "Un vaquero de juguete teme perder su lugar cuando llega un astronauta. Una aventura fuera de casa les enseña a colaborar.",
+    "fuentes": ["https://www.pixar.com/feature-films", "https://www.pixar.com/toy-story"]
+  },
+  {
+    "clave": "buscando-a-nemo", "titulo": "Buscando a Nemo", "tipo": "pelicula", "genero": "animacion", "anio": 2003,
+    "sinopsis": "Tras la desaparición de su hijo, un pez recorre el océano junto a una compañera inesperada y aprende a confiar en los demás.",
+    "fuentes": ["https://www.pixar.com/feature-films", "https://www.pixar.com/finding-nemo"]
+  },
+  {
+    "clave": "coco", "titulo": "Coco", "tipo": "pelicula", "genero": "animacion", "anio": 2017,
+    "sinopsis": "Un niño apasionado por la música visita el mundo de sus antepasados. Allí descubre recuerdos familiares que cambiarán su manera de entenderlos.",
+    "fuentes": ["https://www.pixar.com/feature-films", "https://www.pixar.com/coco"]
+  },
+  {
+    "clave": "intensa-mente", "titulo": "Intensa-Mente", "tipo": "pelicula", "genero": "animacion", "anio": 2015,
+    "sinopsis": "Las emociones de una niña intentan acompañarla durante una mudanza. Alegría y Tristeza deben encontrar juntas el camino de regreso a sus recuerdos.",
+    "fuentes": ["https://www.pixar.com/feature-films", "https://www.pixar.com/inside-out"]
+  },
+  {
+    "clave": "ratatouille", "titulo": "Ratatouille", "tipo": "pelicula", "genero": "comedia", "anio": 2007,
+    "sinopsis": "Una rata con talento culinario encuentra un aliado en un joven trabajador de un restaurante parisino. Su asociación desafía las expectativas de la cocina.",
+    "fuentes": ["https://www.pixar.com/feature-films", "https://www.pixar.com/ratatouille"]
+  },
+  {
+    "clave": "wall-e", "titulo": "WALL-E", "tipo": "pelicula", "genero": "ciencia_ficcion", "anio": 2008,
+    "sinopsis": "Un pequeño robot limpia una Tierra abandonada. El encuentro con una exploradora espacial lo impulsa a seguir una pista sobre el futuro del planeta.",
+    "fuentes": ["https://www.pixar.com/feature-films", "https://www.pixar.com/wall-e"]
+  },
+  {
+    "clave": "jurassic-park", "titulo": "Jurassic Park", "tipo": "pelicula", "genero": "aventura", "anio": 1993,
+    "sinopsis": "Un parque que devuelve la vida a los dinosaurios recibe a sus primeros visitantes. Cuando fallan sus controles, la visita se convierte en supervivencia.",
+    "fuentes": ["https://www.universalpicturesathome.com/movies/jurassic-park"]
+  },
+  {
+    "clave": "et", "titulo": "E.T., el extraterrestre", "tipo": "pelicula", "genero": "ciencia_ficcion", "anio": 1982,
+    "sinopsis": "Un niño descubre a un visitante de otro mundo y decide protegerlo. Sus amigos lo ayudan a buscar una forma de volver a casa.",
+    "fuentes": ["https://www.universalpicturesathome.com/movies/et-the-extra-terrestrial"]
+  },
+  {
+    "clave": "volver-al-futuro", "titulo": "Volver al futuro", "tipo": "pelicula", "genero": "ciencia_ficcion", "anio": 1985,
+    "sinopsis": "Un adolescente viaja accidentalmente al pasado y altera el encuentro de sus padres. Para regresar deberá recomponer la historia de su familia.",
+    "fuentes": ["https://www.universalpicturesathome.com/movies/back-to-the-future"]
+  },
+  {
+    "clave": "tiburon", "titulo": "Tiburón", "tipo": "pelicula", "genero": "suspenso", "anio": 1975,
+    "sinopsis": "Los ataques de un tiburón inquietan a una comunidad costera. Un policía, un investigador y un pescador salen al mar para detener la amenaza.",
+    "fuentes": ["https://www.universalpicturesathome.com/movies/jaws"]
+  },
+  {
+    "clave": "lista-de-schindler", "titulo": "La lista de Schindler", "tipo": "pelicula", "genero": "drama", "anio": 1993,
+    "sinopsis": "Durante el Holocausto, un empresario transforma su fábrica en una oportunidad de protección para trabajadores judíos perseguidos por el régimen nazi.",
+    "fuentes": ["https://www.universalpicturesathome.com/movies/schindlers-list"]
+  },
+  {
+    "clave": "matrix", "titulo": "Matrix", "tipo": "pelicula", "genero": "ciencia_ficcion", "anio": 1999,
+    "sinopsis": "Un programador sospecha que su realidad es una construcción. Un grupo clandestino le ofrece respuestas y una decisión que cambiará su vida.",
+    "fuentes": ["https://www.bfi.org.uk/sight-and-sound/greatest-films-all-time/all-voters/emily-murray", "https://www.bfi.org.uk/lists/go-west-8-japanese-classics-western-films-inspired-them"]
+  },
+  {
+    "clave": "el-origen", "titulo": "El origen", "tipo": "pelicula", "genero": "ciencia_ficcion", "anio": 2010,
+    "sinopsis": "Un especialista en entrar en sueños reúne a un equipo para implantar una idea. La misión lo enfrenta también con recuerdos que no logra abandonar.",
+    "fuentes": ["https://www.bfi.org.uk/sight-and-sound/greatest-films-all-time/all-voters/emily-murray", "https://www.bfi.org.uk/lists/go-west-8-japanese-classics-western-films-inspired-them"]
+  },
+  {
+    "clave": "harry-potter", "titulo": "Harry Potter y la piedra filosofal", "tipo": "pelicula", "genero": "fantasia", "anio": 2001,
+    "sinopsis": "Un niño descubre que pertenece al mundo de la magia. Su llegada a una escuela especial le brinda amistades y un misterio que investigar.",
+    "fuentes": ["https://www2.bfi.org.uk/sites/bfi.org.uk/files/downloads/bfi-statistical-yearbook-2017.pdf"]
+  },
+  {
+    "clave": "casablanca", "titulo": "Casablanca", "tipo": "pelicula", "genero": "romance", "anio": 1942,
+    "sinopsis": "El dueño de un café se reencuentra con una antigua pareja en tiempos de guerra. El encuentro lo obliga a elegir entre sus sentimientos y ayudarla.",
+    "fuentes": ["https://www.bfi.org.uk/news/bfi-southbank-announces-reopening-programme-new-health-safety-measures"]
+  },
+  {
+    "clave": "comunidad-del-anillo", "titulo": "El señor de los anillos: La comunidad del anillo", "tipo": "pelicula", "genero": "fantasia", "anio": 2001,
+    "sinopsis": "Un hobbit recibe un anillo que amenaza a toda la Tierra Media. Una comunidad de viajeros se forma para acompañarlo lejos de su hogar.",
+    "fuentes": ["https://www.bfi.org.uk/film/52b45f51-7f3b-56e6-991d-eae1443c0e77/the-lord-of-the-rings-the-fellowship-of-the-ring"]
+  },
+  {
+    "clave": "caballero-de-la-noche", "titulo": "Batman: El caballero de la noche", "tipo": "pelicula", "genero": "accion", "anio": 2008,
+    "sinopsis": "Batman y sus aliados buscan contener el crimen en Gotham. Un enemigo impredecible pone a prueba la confianza de la ciudad y sus principios.",
+    "fuentes": ["https://www.bfi.org.uk/film/c696829d-9680-5529-a70e-1140da039234/the-dark-knight"]
+  },
+  {
+    "clave": "mago-de-oz", "titulo": "El mago de Oz", "tipo": "pelicula", "genero": "fantasia", "anio": 1939,
+    "sinopsis": "Un tornado lleva a Dorothy a una tierra desconocida. En su búsqueda del camino a casa conoce compañeros que también necesitan encontrar respuestas.",
+    "fuentes": ["https://www.bfi.org.uk/news/bfi-southbank-announces-reopening-programme-new-health-safety-measures"]
+  },
+  {
+    "clave": "gigante-de-hierro", "titulo": "El gigante de hierro", "tipo": "pelicula", "genero": "animacion", "anio": 1999,
+    "sinopsis": "Un niño entabla amistad con un enorme robot llegado del espacio. Juntos intentan demostrar que su apariencia no determina quién puede llegar a ser.",
+    "fuentes": ["https://www.bfi.org.uk/film/26c64150-052f-5e36-86c3-57599cc42cc7/the-iron-giant", "https://www.bfi.org.uk/lists/50-films-see-age-15"]
+  },
+  {
+    "clave": "suenos-de-fuga", "titulo": "Sueños de fuga", "tipo": "pelicula", "genero": "drama", "anio": 1994,
+    "sinopsis": "Un hombre condenado construye una amistad dentro de prisión. Con paciencia e ingenio sostiene su esperanza frente a un entorno marcado por la injusticia.",
+    "fuentes": ["https://www.bfi.org.uk/film/27458270-29df-5059-803c-b4e4bef9912b/the-shawshank-redemption", "https://www.bfi.org.uk/lists/10-great-stephen-king-adaptations"]
+  },
+  {
+    "clave": "stranger-things", "titulo": "Stranger Things", "tipo": "serie", "genero": "ciencia_ficcion", "anio": 2016,
+    "sinopsis": "La desaparición de un niño reúne a sus amigos alrededor de un misterio. Su investigación descubre experimentos secretos y fenómenos que alteran su pequeño pueblo.",
+    "fuentes": ["https://about.netflix.com/en/news/world-premiere-of-stranger-things-the-first-shadow-a-new-story-live-on-stage"]
+  },
+  {
+    "clave": "the-crown", "titulo": "The Crown", "tipo": "serie", "genero": "drama", "anio": 2016,
+    "sinopsis": "Una dramatización recorre el reinado de Isabel II y las tensiones entre responsabilidades públicas, cambios políticos y relaciones personales dentro de la familia real.",
+    "fuentes": ["https://about.netflix.com/en/news/today-in-paris-netflix-hosted-a-press-conference-where-announcements-have-been-made-in-support-of-marco-polo-the-crown-and-marseille"]
+  },
+  {
+    "clave": "dark", "titulo": "Dark", "tipo": "serie", "genero": "suspenso", "anio": 2017,
+    "sinopsis": "La desaparición de varios jóvenes conecta los secretos de cuatro familias. Las pistas revelan relaciones entre generaciones que desafían su comprensión del tiempo.",
+    "fuentes": ["https://about.netflix.com/en/news/dark-is-coming-12-1-see-the-spellbinding-date-announcement"]
+  },
+  {
+    "clave": "merlina", "titulo": "Merlina", "tipo": "serie", "genero": "fantasia", "anio": 2022,
+    "sinopsis": "Merlina Addams ingresa a una academia poco convencional. Entre nuevos compañeros y habilidades que intenta dominar, investiga sucesos inquietantes alrededor de la escuela.",
+    "fuentes": ["https://www.netflix.com/tudum/articles/best-scary-movies-tv-shows-on-netflix"]
+  },
+  {
+    "clave": "arcane", "titulo": "Arcane", "tipo": "serie", "genero": "animacion", "anio": 2021,
+    "sinopsis": "Dos hermanas quedan enfrentadas por los conflictos entre una ciudad próspera y sus barrios marginados. Nuevas tecnologías profundizan una lucha que también es personal.",
+    "fuentes": ["https://www.netflix.com/tudum/arcane", "https://www.riotgames.com/en/news/global-arcane-premiere-co-streaming-and-rewards"]
+  },
+  {
+    "clave": "nuestro-planeta", "titulo": "Nuestro planeta", "tipo": "serie", "genero": "documental", "anio": 2019,
+    "sinopsis": "Un recorrido por hábitats de distintos continentes muestra la diversidad de la vida y las relaciones que sostienen el equilibrio de los ecosistemas.",
+    "fuentes": ["https://about.netflix.com/en/news/sir-david-attenborough-voices-new-netflix-series-our-planet-1"]
+  },
+  {
+    "clave": "gambito-de-dama", "titulo": "Gambito de dama", "tipo": "serie", "genero": "drama", "anio": 2020,
+    "sinopsis": "Una joven descubre un talento excepcional para el ajedrez. Mientras avanza en torneos, debe aprender a convivir con la soledad y sus dificultades personales.",
+    "fuentes": ["https://about.netflix.com/en/news/the-queens-gambit-netflix-most-watched-scripted-limited-series"]
+  },
+  {
+    "clave": "one-piece", "titulo": "One Piece", "tipo": "serie", "genero": "aventura", "anio": 2023,
+    "sinopsis": "Un joven pirata reúne una tripulación para buscar un tesoro legendario. Cada viaje los enfrenta a nuevos rivales y fortalece sus sueños compartidos.",
+    "fuentes": ["https://www.netflix.com/tudum/one-piece"]
+  },
+  {
+    "clave": "atypical", "titulo": "Atypical", "tipo": "serie", "genero": "comedia", "anio": 2017,
+    "sinopsis": "Un adolescente autista busca mayor independencia y sus primeras relaciones de pareja. Su familia también debe revisar las formas en que se acompaña y cambia.",
+    "fuentes": ["https://about.netflix.com/en/news/atypical-has-been-renewed-by-netflix-with-an-increased-10-episode-second-season"]
+  },
+  {
+    "clave": "cobra-kai", "titulo": "Cobra Kai", "tipo": "serie", "genero": "accion", "anio": 2018,
+    "sinopsis": "Antiguos rivales del karate retoman sus diferencias al entrenar a una nueva generación. Sus alumnos heredan disputas que también ofrecen oportunidades de reconciliación.",
+    "fuentes": ["https://www.netflix.com/tudum/cobra-kai"]
+  }
+]

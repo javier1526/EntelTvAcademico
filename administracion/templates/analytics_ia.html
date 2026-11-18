@@ -1,0 +1,129 @@
+{% extends 'componentes/base.html' %}
+{% block titulo %}
+    Estadísticas de atención
+{% endblock %}
+{% block contenido %}
+    <header class="encabezado-pagina">
+        <p class="sobretitulo">
+            Datos de la plataforma
+        </p>
+        <h1>
+            Estadísticas de atención
+        </h1>
+        <p class="texto-secundario">
+            Resumen calculado a partir de los tickets registrados.
+        </p>
+    </header>
+    <div class="resumen-estadisticas">
+        <div class="panel">
+            <span class="numero-estadistica">
+                {{ total_preguntas }}
+            </span>
+            <p>
+                Tickets totales
+            </p>
+        </div>
+        <div class="panel">
+            <span class="numero-estadistica">
+                {{ preguntas_abiertas }}
+            </span>
+            <p>
+                Abierto
+            </p>
+        </div>
+        <div class="panel">
+            <span class="numero-estadistica">
+                {{ preguntas_proceso }}
+            </span>
+            <p>
+                En proceso
+            </p>
+        </div>
+        <div class="panel">
+            <span class="numero-estadistica">
+                {{ preguntas_cerradas }}
+            </span>
+            <p>
+                Cerrada
+            </p>
+        </div>
+    </div>
+    <p class="texto-secundario">
+        Tickets cerrados: {{ porcentaje_resueltas }} %
+    </p>
+    <div class="dos-columnas">
+        <section class="panel">
+            <h2>
+                Tickets por categoría
+            </h2>
+            <table class="table tabla-plataforma">
+                <thead>
+                    <tr>
+                        <th>
+                            Categoría
+                        </th>
+                        <th>
+                            Total
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for categoria in categorias_data %}
+                        <tr>
+                            <th scope="row">
+                                {{ categoria.categoria }}
+                            </th>
+                            <td>
+                                {{ categoria.total }}
+                            </td>
+                        </tr>
+                    {% empty %}
+                        <tr>
+                            <td colspan="2">
+                                Todavía no hay datos.
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </section>
+        <section class="panel">
+            <h2>
+                Usuarios con más solicitudes
+            </h2>
+            <table class="table tabla-plataforma">
+                <thead>
+                    <tr>
+                        <th>
+                            Usuario
+                        </th>
+                        <th>
+                            Tickets
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for usuario in usuarios_activos %}
+                        <tr>
+                            <th scope="row">
+                                {{ usuario.usuario }}
+                            </th>
+                            <td>
+                                {{ usuario.num_preguntas }}
+                            </td>
+                        </tr>
+                    {% empty %}
+                        <tr>
+                            <td colspan="2">
+                                Todavía no hay datos.
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </section>
+    </div>
+    <a class="volver" href="{% url 'administracion' %}">
+        Volver al panel
+    </a>
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends 'catalogo/base.html' %}
+{% block titulo %}
+    Editar mi reseña
+{% endblock %}
+{% block contenido %}
+    <h1>
+        Editar mi reseña de {{ contenido.titulo }}
+    </h1>
+    <form method="post" class="formulario-resena">
+        {% csrf_token %}
+        {{ formulario.as_p }}
+        <button class="btn btn-primary" type="submit">
+            Guardar reseña
+        </button>
+        <a class="btn btn-outline-light" href="{% url 'catalogo:detalle' contenido.pk %}">
+            Cancelar
+        </a>
+    </form>
+{% endblock %}

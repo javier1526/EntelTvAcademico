@@ -1,0 +1,66 @@
+{% extends 'componentes/base.html' %}
+{% block titulo %}
+    Centro de ayuda
+{% endblock %}
+{% block contenido %}
+    <header class="encabezado-pagina">
+        <p class="sobretitulo">
+            Estamos para ayudarte
+        </p>
+        <h1>
+            Centro de ayuda
+        </h1>
+        {% if contenido %}
+            <p>
+                Consulta sobre
+                <a href="{% url 'catalogo:detalle' contenido.pk %}">
+                    {{ contenido.titulo }}
+                </a>
+                .
+            </p>
+        {% else %}
+            <p class="texto-secundario">
+                Ayuda general de la plataforma.
+            </p>
+        {% endif %}
+    </header>
+    <div class="dos-columnas">
+        <section class="panel" id="crear-ticket" aria-labelledby="titulo-ticket">
+            <h2 id="titulo-ticket">
+                Atención con un ejecutivo
+            </h2>
+            <p class="texto-secundario">
+                Crea un ticket directamente. Las respuestas quedarán en Mis tickets.
+            </p>
+            <form method="post">
+                {% csrf_token %}
+                {{ formulario.as_p }}
+                <button class="btn btn-acento" type="submit">
+                    Crear ticket
+                </button>
+            </form>
+        </section>
+        <section class="panel panel-ayuda" aria-labelledby="titulo-ayuda">
+            <p class="sobretitulo">
+                Tú eliges cómo conversar
+            </p>
+            <h2 id="titulo-ayuda">
+                Asistente virtual
+            </h2>
+            <p>
+                Obtén orientación sobre películas, series, tu cuenta y el uso de la plataforma.
+            </p>
+            <p class="texto-secundario">
+                Es opcional. Siempre puedes contactar directamente a un ejecutivo, incluso si el asistente no está disponible.
+            </p>
+            {% if not user.admin and not user.tecnico %}
+                <button type="button" class="btn btn-outline-light" data-abrir-asistente>
+                    Abrir asistente virtual
+                </button>
+            {% endif %}
+            <a class="enlace-secundario" href="{% url 'inicio' user.pk %}">
+                Consultar mis tickets
+            </a>
+        </section>
+    </div>
+{% endblock %}

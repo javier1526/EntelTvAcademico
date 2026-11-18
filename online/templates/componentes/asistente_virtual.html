@@ -1,0 +1,59 @@
+<aside class="asistente" aria-label="Asistente virtual">
+    <button id="abrir-asistente" class="burbuja-asistente" type="button" aria-label="Abrir asistente virtual" aria-controls="ventana-asistente" aria-expanded="false">
+        <svg viewBox="0 0 24 24" width="25" height="25" aria-hidden="true">
+            <path d="M5 4h14a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-8l-6 4v-4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2Z" fill="none" stroke="currentColor" stroke-width="1.7"/>
+            <path d="M7 9h10M7 13h7" stroke="currentColor" stroke-width="1.7"/>
+        </svg>
+        <span class="visually-hidden">
+            Asistente virtual
+        </span>
+    </button>
+    <section id="ventana-asistente" class="ventana-asistente" role="dialog" aria-labelledby="titulo-asistente" hidden>
+        <header class="cabecera-asistente">
+            <div>
+                <h2 id="titulo-asistente">
+                    Asistente virtual
+                </h2>
+                <p>
+                    Entel TV · Atención opcional
+                </p>
+            </div>
+            <button id="cerrar-asistente" type="button" class="cerrar-asistente" aria-label="Cerrar asistente virtual">
+                Cerrar
+            </button>
+        </header>
+        {% if contenido and contenido.activo %}
+            <p class="contexto-asistente">
+                Consulta sobre
+                <strong>
+                    {{ contenido.titulo }}
+                </strong>
+            </p>
+        {% endif %}
+        <div id="mensajes-asistente" class="mensajes-asistente" role="log" aria-live="polite" aria-relevant="additions text">
+            <p class="mensaje-asistente">
+                ¡Hola! Soy el asistente virtual de Entel TV. ¿En qué puedo ayudarte?
+            </p>
+        </div>
+        <form id="formulario-asistente" class="formulario-asistente" method="post" action="{% if contenido and contenido.activo %}{% url 'consultar_ia_contenido' contenido.pk %}{% else %}{% url 'consultar_ia' %}{% endif %}">
+            {% csrf_token %}
+            <label for="consulta-asistente">
+                Escribe tu consulta
+            </label>
+            <div class="entrada-asistente">
+                <input id="consulta-asistente" name="consulta" type="text" maxlength="1000" required autocomplete="off" placeholder="¿En qué puedo ayudarte?">
+                <button type="submit" class="btn btn-acento">
+                    Enviar
+                </button>
+            </div>
+        </form>
+        <div class="pie-asistente">
+            <p>
+                No compartas contraseñas, RUT ni datos privados.
+            </p>
+            <a href="{% if contenido and contenido.activo %}{% url 'ayuda_contenido' contenido.pk %}{% else %}{% url 'centro_ayuda' %}{% endif %}#crear-ticket">
+                Crear ticket con un ejecutivo
+            </a>
+        </div>
+    </section>
+</aside>

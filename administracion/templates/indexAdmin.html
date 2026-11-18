@@ -1,0 +1,163 @@
+{% extends 'componentes/base.html' %}
+{% block titulo %}
+    Panel de administración
+{% endblock %}
+{% block contenido %}
+    <header class="encabezado-pagina">
+        <p class="sobretitulo">
+            Gestión Entel TV
+        </p>
+        <h1>
+            {% if user.admin %}
+                Panel de administración
+            {% else %}
+                Panel de atención
+            {% endif %}
+        </h1>
+        <p class="texto-secundario">
+            Bienvenido, {{ user.usuario }}. Consulta la atención y administra tus herramientas autorizadas.
+        </p>
+    </header>
+    <div class="cuadricula-panel">
+        <a class="panel enlace-panel" href="{% url 'escritorio_tecnico' %}">
+            <h2>
+                Atender tickets
+            </h2>
+            <p>
+                Bandeja compartida de solicitudes pendientes.
+            </p>
+        </a>
+        <a class="panel enlace-panel" href="{% url 'listado_preguntas' %}">
+            <h2>
+                Buscar tickets
+            </h2>
+            <p>
+                Filtros, conversaciones y estados.
+            </p>
+        </a>
+        {% if user.admin %}
+            <a class="panel enlace-panel" href="{% url 'catalogo:gestion' %}">
+                <h2>
+                    Gestión del catálogo
+                </h2>
+                <p>
+                    Agregar, editar, desactivar y reactivar contenidos.
+                </p>
+            </a>
+            <a class="panel enlace-panel" href="{% url 'gestion_usuarios' %}">
+                <h2>
+                    Gestión de usuarios
+                </h2>
+                <p>
+                    Ver, modificar y desactivar usuarios conservando su historial.
+                </p>
+            </a>
+            <a class="panel enlace-panel" href="{% url 'analytics_ia' %}">
+                <h2>
+                    Estadísticas
+                </h2>
+                <p>
+                    Resumen de tickets, categorías y atención.
+                </p>
+            </a>
+            <a class="panel enlace-panel" href="{% url 'admin:index' %}">
+                <h2>
+                    Django Admin
+                </h2>
+                <p>
+                    Administración de perfiles, permisos y registros.
+                </p>
+            </a>
+        {% endif %}
+    </div>
+    {% if estadisticas_ia %}
+        <div class="resumen-estadisticas">
+            <div class="panel">
+                <span class="numero-estadistica">
+                    {{ estadisticas_ia.total_preguntas|default:0 }}
+                </span>
+                <p>
+                    Tickets registrados
+                </p>
+            </div>
+            <div class="panel">
+                <span class="numero-estadistica">
+                    {{ estadisticas_ia.preguntas_sin_respuesta|default:0 }}
+                </span>
+                <p>
+                    Sin respuesta
+                </p>
+            </div>
+            <div class="panel">
+                <span class="numero-estadistica">
+                    {{ estadisticas_ia.tendencia_semanal|default:0 }}
+                </span>
+                <p>
+                    Tickets esta semana
+                </p>
+            </div>
+        </div>
+    {% endif %}
+    {% for alerta in alertas_ia %}
+        <p class="alert alert-info">
+            {{ alerta.mensaje }}
+        </p>
+    {% endfor %}
+    <section class="panel">
+        <h2>
+            Tickets registrados
+        </h2>
+        <div class="tabla-contenedor">
+            <table class="table tabla-plataforma">
+                <thead>
+                    <tr>
+                        <th>
+                            Ticket
+                        </th>
+                        <th>
+                            Categoría
+                        </th>
+                        <th>
+                            Estado
+                        </th>
+                        <th>
+                            Cliente
+                        </th>
+                        <th>
+                            Consulta
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for pregunta in Preguntas %}
+                        <tr>
+                            <th scope="row">
+                                {{ pregunta.Titulo }}
+                            </th>
+                            <td>
+                                {{ pregunta.get_categoria_display }}
+                            </td>
+                            <td>
+                                {{ pregunta.estado }}
+                            </td>
+                            <td>
+                                {{ pregunta.Usuario.usuario }}
+                            </td>
+                            <td>
+                                <a class="enlace-acento" href="{% url 'respuestas' pregunta.Usuario_id pregunta.pk %}">
+                                    Abrir ticket #{{ pregunta.pk }}
+                                </a>
+                            </td>
+                        </tr>
+                    {% empty %}
+                        <tr>
+                            <td colspan="5">
+                                No hay tickets registrados.
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </section>
+{% endblock %}

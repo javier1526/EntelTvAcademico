@@ -1,0 +1,120 @@
+{% extends 'catalogo/base.html' %}
+{% block titulo %}
+    {{ contenido.titulo }}
+{% endblock %}
+{% block contenido %}
+    <a class="volver" href="{% url 'catalogo:listado' %}">
+        Volver al catálogo
+    </a>
+    {% if ticket %}
+        <a class="volver" href="{% url 'respuestas' ticket.Usuario_id ticket.pk %}">
+            Volver al ticket #{{ ticket.pk }}
+        </a>
+    {% endif %}
+    {% if solo_lectura %}
+        <p class="alert alert-warning" role="status">
+            Contenido no disponible. Esta ficha se conserva para consultar el historial del ticket.
+        </p>
+    {% endif %}
+    <article class="ficha-contenido">
+        <img class="portada-ficha" src="{{ contenido.url_imagen }}"
+             alt="Portada referencial de {{ contenido.titulo }}" width="480" height="720">
+        <div class="datos-ficha">
+            <p class="sobretitulo">
+                {{ contenido.get_tipo_display }}
+            </p>
+            <h1>
+                {{ contenido.titulo }}
+            </h1>
+            <dl class="metadatos-ficha">
+                <div>
+                    <dt>
+                        Género
+                    </dt>
+                    <dd>
+                        {{ contenido.get_genero_display }}
+                    </dd>
+                </div>
+                <div>
+                    <dt>
+                        Año de estreno
+                    </dt>
+                    <dd>
+                        {{ contenido.anio }}
+                    </dd>
+                </div>
+            </dl>
+            <h2>
+                Sinopsis
+            </h2>
+            <p class="sinopsis-ficha">
+                {{ contenido.sinopsis }}
+            </p>
+            <p class="aviso-demo">
+                Título de demostración. No se ofrece reproducción de contenido.
+            </p>
+            {% if not solo_lectura %}
+                <a class="btn btn-primary" href="{% url 'ayuda_contenido' contenido.id %}">
+                    Solicitar ayuda
+                </a>
+            {% endif %}
+            {% if user.admin and not solo_lectura %}
+                <a class="btn btn-outline-light" href="{% url 'catalogo:editar' contenido.id %}">
+                    Editar contenido
+                </a>
+            {% endif %}
+        </div>
+    </article>
+    <section class="seccion-resenas" aria-labelledby="titulo-resenas">
+        <h2 id="titulo-resenas">
+            Reseñas
+        </h2>
+        <p>
+            {% if cantidad_resenas %}
+                Promedio: {{ promedio|floatformat:1 }} de 5
+            {% else %}
+                Sin valoraciones
+            {% endif %}
+            · {{ cantidad_resenas }} reseña{{ cantidad_resenas|pluralize }}
+        </p>
+        {% if formulario_resena and not solo_lectura %}
+            <form method="post" action="{% url 'catalogo:crear_resena' contenido.pk %}" class="formulario-resena">
+                {% csrf_token %}
+                {{ formulario_resena.as_p }}
+                <button class="btn btn-primary" type="submit">
+                    Publicar reseña
+                </button>
+            </form>
+        {% endif %}
+        {% for resena in resenas %}
+            <article class="resena">
+                <h3>
+                    {{ resena.usuario.usuario }} · {{ resena.calificacion }} de 5
+                </h3>
+                <time datetime="{{ resena.fecha_creacion|date:'c' }}">
+                    {{ resena.fecha_creacion|date:'d/m/Y H:i' }}
+                </time>
+                <p>
+                    {{ resena.comentario|linebreaksbr }}
+                </p>
+                {% if resena.usuario_id == user.pk and not solo_lectura %}
+                    <div class="acciones-resena">
+                        <a class="btn btn-outline-light" href="{% url 'catalogo:editar_resena' resena.pk %}">
+                            Editar mi reseña
+                        </a>
+                        <form method="post" action="{% url 'catalogo:eliminar_resena' resena.pk %}">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-outline-danger">
+                                Eliminar mi reseña
+                            </button>
+                        </form>
+                    </div>
+                {% endif %}
+            </article>
+        {% empty %}
+            <p>
+                Todavía no hay reseñas de este contenido.
+            </p>
+        {% endfor %}
+    </section>
+{% endblock %}
