@@ -1,7 +1,6 @@
 # Entel TV
 
-Proyecto académico de la Evaluación Sumativa N.º 3, Parte 2, de Programación
-Back End. Docente: Boris Astorga Parraguez.
+## Proyecto académico
 
 Integra catálogo de películas y series, reseñas y atención al cliente con
 tickets, conversaciones y un asistente virtual. Es un prototipo inspirado en
